@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ifsp6c1+VAp9RDTA+O+PHtb00T/dx7BCtVqv0oqXt1o=",
+  "Hash": "DAGrloQHLqzy08kIxrUbU4wyZ0piBrhYdUFJZvXbD9A=",
   "Source": "E-vehicle-simulator",
   "BasePath": "_content/E-vehicle-simulator",
   "Mode": "Default",
@@ -102,12 +102,12 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
-      "Identity": "C:\\Users\\Dhruui\\source\\repos\\dhruviSanghani\\E-vehicle-simulator\\E-vehicle-simulator\\E-vehicle-simulator\\wwwroot\\elec_station_data_ca.csv",
+      "Identity": "C:\\Users\\Dhruui\\source\\repos\\dhruviSanghani\\E-vehicle-simulator\\E-vehicle-simulator\\E-vehicle-simulator\\wwwroot\\elec_station_data_ca.csv.csv",
       "SourceId": "E-vehicle-simulator",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Dhruui\\source\\repos\\dhruviSanghani\\E-vehicle-simulator\\E-vehicle-simulator\\E-vehicle-simulator\\wwwroot\\",
       "BasePath": "_content/E-vehicle-simulator",
-      "RelativePath": "elec_station_data_ca.csv",
+      "RelativePath": "elec_station_data_ca.csv.csv",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -116,7 +116,24 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\elec_station_data_ca.csv"
+      "OriginalItemSpec": "wwwroot\\elec_station_data_ca.csv.csv"
+    },
+    {
+      "Identity": "C:\\Users\\Dhruui\\source\\repos\\dhruviSanghani\\E-vehicle-simulator\\E-vehicle-simulator\\E-vehicle-simulator\\wwwroot\\elec_station_data_ca1.csv",
+      "SourceId": "E-vehicle-simulator",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Dhruui\\source\\repos\\dhruviSanghani\\E-vehicle-simulator\\E-vehicle-simulator\\E-vehicle-simulator\\wwwroot\\",
+      "BasePath": "_content/E-vehicle-simulator",
+      "RelativePath": "elec_station_data_ca1.csv",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\elec_station_data_ca1.csv"
     },
     {
       "Identity": "C:\\Users\\Dhruui\\source\\repos\\dhruviSanghani\\E-vehicle-simulator\\E-vehicle-simulator\\E-vehicle-simulator\\wwwroot\\favicon.ico",
