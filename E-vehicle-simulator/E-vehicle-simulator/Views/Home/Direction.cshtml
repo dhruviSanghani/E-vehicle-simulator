@@ -31,7 +31,7 @@
             $.ajax({
                 type: "GET",
                 dataType: 'json',
-                url: "https://api.mapbox.com/directions/v5/mapbox/driving/" + $("#lblstart").text() + ";" + $("#lblend").text() + "?geometries=geojson&access_token=pk.eyJ1IjoiZGhydXZpMTEiLCJhIjoiY2w0dDl0dmVyMDZqMjNpdWx6d2ljc2VvNCJ9.jrAkjQJMMPUio0hwOAu-pg",
+                url: "https://api.mapbox.com/directions/v5/mapbox/driving/" + $("#lblstart").text() + ";" + $("#lblend").text() + "?geometries=geojson&overview=full&engine=electric&ev_initial_charge=600&ev_max_charge=5000&ev_connector_types=ccs_combo_type1,ccs_combo_type2&energy_consumption_curve=0,300;20,160;80,140;120,180&ev_charging_curve=0,100000;40000,70000;60000,30000;80000,10000&ev_min_charge_at_charging_station=1&access_token=pk.eyJ1IjoiZGhydXZpMTEiLCJhIjoiY2w0dDl0dmVyMDZqMjNpdWx6d2ljc2VvNCJ9.jrAkjQJMMPUio0hwOAu-pg&steps=true",
                 async: true,
                 contentType: "application/json; charset=utf-8",
                 success: function (msg) {
@@ -39,6 +39,16 @@
 
                     geojsonFeature.geometry=msg.routes[0].geometry;
                     console.log(geojsonFeature);
+                    var markers = new L.MarkerClusterGroup();
+                    for (var i in msg.waypoints) {
+                 var row = msg.waypoints[i];
+
+                var marker = L.marker([row.location[1],row.location[0]], {
+                    opacity: 1
+                }).bindPopup(row.name);
+                markers.addLayer(marker);
+                marker.addTo(map);
+            }
 
                     myLayer.addData(geojsonFeature);
                 }
