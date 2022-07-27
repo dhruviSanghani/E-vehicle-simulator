@@ -10,14 +10,14 @@ namespace E_vehicle_simulator.Controllers
         {
             _mySql = mySql;
         }
-        public void Open ()
+        public void Open()
         {
             _mySql.Open();
         }
         public void Close()
         {
             _mySql.Close();
-        }       
+        }
 
         public IEnumerable<T> Query<T>(string sql)
         {
