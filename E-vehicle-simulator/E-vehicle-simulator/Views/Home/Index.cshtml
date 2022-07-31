@@ -1,8 +1,11 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
+<div class="container">    
+@*<main role="main" class="pb-3">*@
      <div id="map"></div>
+   @*  </main>*@
+     </div>
 @section Scripts{
      <script type="text/javascript">
         // london cordinate 42.995120541981635, -81.2451841000309
@@ -21,7 +24,7 @@
         var markers = new L.MarkerClusterGroup();
         //markers.addLayer(L.marker([42.995120541981635, -81.2451841000309]));
 
-        $.get('elec_station_data_ca.csv', function (csvString) {
+        $.get('../../elec_station_data_ca.csv', function (csvString) {
 
             // Use PapaParse to convert string to array of objects
             var data = Papa.parse(csvString, { header: true, dynamicTyping: true }).data;

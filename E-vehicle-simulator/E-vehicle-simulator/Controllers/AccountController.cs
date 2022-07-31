@@ -39,11 +39,22 @@ namespace E_vehicle_simulator.Controllers
                
                 if (users!=null)
                 {
-                    HttpContext.Session.SetObject("Userdetails", users);
+                    HttpContext.Session.SetString("Userdetails", users.FullName);
                     return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ViewData["message"] = "Login Failed. Please check your username and password";
                 }
             }
             return View();
-        }       
+        }
+
+        [HttpGet]
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Login", "Account");
+        }
     }
 }

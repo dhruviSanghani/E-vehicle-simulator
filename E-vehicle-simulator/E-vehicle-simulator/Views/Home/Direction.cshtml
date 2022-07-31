@@ -1,6 +1,8 @@
 ﻿@{
     ViewData["Title"] = "Direction";
 }
+<div class="container">    
+<main role="main" class="pb-3">
 <div class="Overdiv">
     <span class="label label-default">Click on marker for Start location</span>
     <label id="lblstart"></label><br>
@@ -12,6 +14,8 @@
     <button type="button" class="btn btn-primary" onclick="loadDoc()">Click For direction</button>
 </div>
 <div id="map"></div>
+</main>
+</div>
 
 @section Scripts{
     <script>
@@ -32,7 +36,7 @@
                 type: "GET",
                 dataType: 'json',
                 //url: "https://api.mapbox.com/directions/v5/mapbox/driving/" + $("#lblstart").text() + ";" + $("#lblend").text() + "?geometries=geojson&overview=full&engine=electric&ev_initial_charge=600&ev_max_charge=5000&ev_connector_types=ccs_combo_type1,ccs_combo_type2&energy_consumption_curve=0,300;20,160;80,140;120,180&ev_charging_curve=0,100000;40000,70000;60000,30000;80000,10000&ev_min_charge_at_charging_station=1&access_token=pk.eyJ1IjoiZGhydXZpMTEiLCJhIjoiY2w0dDl0dmVyMDZqMjNpdWx6d2ljc2VvNCJ9.jrAkjQJMMPUio0hwOAu-pg&steps=true",
-               url: "https://router.hereapi.com/v8/routes?departureTime=any&ev[connectorTypes]=iec62196Type2Combo,iec62196Type1Combo,tesla&transportMode=car&return=summary,polyline&ev[freeFlowSpeedTable]=0,0.239,27,0.239,45,0.259,60,0.196,75,0.207,90,0.238,100,0.26,110,0.296,120,0.337,130,0.351,250,0.351&ev[trafficSpeedTable]=0,0.349,27,0.319,45,0.329,60,0.266,75,0.287,90,0.318,100,0.33,110,0.335,120,0.35,130,0.36,250,0.36&ev[auxiliaryConsumption]=1.8&ev[ascent]=9&ev[descent]=4.3&ev[makeReachable]=true&ev[initialCharge]=48&ev[maxCharge]=180&ev[chargingCurve]=0,239,32,199,56,167,60,130,64,111,68,83,72,55,76,33,78,17,80,1&ev[maxChargeAfterChargingStation]=72&apikey=_833T-Cuiz0sanFvX6aiCTeEBCoeNpvCenxv6mZ7v4M"
+               url: "https://router.hereapi.com/v8/routes?departureTime=any&ev[connectorTypes]=iec62196Type2Combo,iec62196Type1Combo,tesla&transportMode=car&return=summary,polyline&ev[freeFlowSpeedTable]=0,0.239,27,0.239,45,0.259,60,0.196,75,0.207,90,0.238,100,0.26,110,0.296,120,0.337,130,0.351,250,0.351&ev[trafficSpeedTable]=0,0.349,27,0.319,45,0.329,60,0.266,75,0.287,90,0.318,100,0.33,110,0.335,120,0.35,130,0.36,250,0.36&ev[auxiliaryConsumption]=1.8&ev[ascent]=9&ev[descent]=4.3&ev[makeReachable]=true&ev[initialCharge]=28&ev[maxCharge]=90&ev[chargingCurve]=0,239,32,199,56,167,60,130,64,111,68,83,72,55,76,33,78,17,80,1&ev[maxChargeAfterChargingStation]=72&apikey=_833T-Cuiz0sanFvX6aiCTeEBCoeNpvCenxv6mZ7v4M"
                    + "&origin=" + $("#lblstart").text().split(",")[1] + "," + $("#lblstart").text().split(",")[0] + "&destination=" + $("#lblend").text().split(",")[1] + "," + $("#lblend").text().split(",")[0],
                 async: true,
                 contentType: "application/json; charset=utf-8",
