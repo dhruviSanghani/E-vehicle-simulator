@@ -123,48 +123,13 @@ INSERT INTO `evbrands` VALUES (1,'Tesla'),(2,'Hyundai'),(3,'BMW'),(4,'Audi'),(5,
 UNLOCK TABLES;
 
 --
--- Table structure for table `evliveinfo`
+-- Table structure for table `evcar`
 --
 
-DROP TABLE IF EXISTS `evliveinfo`;
+DROP TABLE IF EXISTS `evcar`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `evliveinfo` (
-  `EVLiveInfoID` int NOT NULL AUTO_INCREMENT,
-  `CarId` int NOT NULL,
-  `CurrentRunningKms` int DEFAULT NULL,
-  `CurrentBatteryPercentage` float DEFAULT NULL,
-  `SourceLongitude` double DEFAULT NULL,
-  `SourceLatitude` double DEFAULT NULL,
-  `IsAllocated` tinyint DEFAULT NULL,
-  `BatteryPercentageAtDestination` float DEFAULT NULL,
-  `DestinationLatitude` double DEFAULT NULL,
-  `DestinationLongitude` double DEFAULT NULL,
-  PRIMARY KEY (`EVLiveInfoID`),
-  UNIQUE KEY `DestinationLongitude_UNIQUE` (`DestinationLongitude`),
-  KEY `FKEYEVMODELID_idx_idx` (`CarId`),
-  CONSTRAINT `FKEYEVMODEL_idx` FOREIGN KEY (`CarId`) REFERENCES `evmodels` (`CarId`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `evliveinfo`
---
-
-LOCK TABLES `evliveinfo` WRITE;
-/*!40000 ALTER TABLE `evliveinfo` DISABLE KEYS */;
-INSERT INTO `evliveinfo` VALUES (1,100,NULL,50,-81.214418,43.04263,NULL,46,42.990018,-81.250306),(2,101,NULL,43,-81.223853,42.936349,NULL,39,43.017922,-81.214593),(3,102,NULL,85,-81.255172,43.034952,NULL,83,42.959033,-81.235184),(4,103,NULL,68,-81.214418,43.012817,NULL,61,-81.199929,-81.279478),(5,104,NULL,76,-81.288593,43.038038,NULL,73,43.005131,-81.174015),(6,105,NULL,32,-81.223758,42.958621,NULL,30,42.984434,-81.229931),(7,106,NULL,23,-81.281606,43.025071,NULL,20,42.983343,-81.254411),(8,107,NULL,89,-81.214981,42.980507,NULL,82,42.942299,-81.398029),(9,108,NULL,44,-81.235184,42.959033,NULL,39,42.947609,-81.281203),(10,109,NULL,52,-81.235184,42.959033,NULL,49,42.983012,-81.234849);
-/*!40000 ALTER TABLE `evliveinfo` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `evmodels`
---
-
-DROP TABLE IF EXISTS `evmodels`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `evmodels` (
+CREATE TABLE `evcar` (
   `CarId` int NOT NULL AUTO_INCREMENT,
   `CarModelName` varchar(45) NOT NULL,
   `CarModelNo` varchar(45) NOT NULL,
@@ -190,13 +155,48 @@ CREATE TABLE `evmodels` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `evmodels`
+-- Dumping data for table `evcar`
 --
 
-LOCK TABLES `evmodels` WRITE;
-/*!40000 ALTER TABLE `evmodels` DISABLE KEYS */;
-INSERT INTO `evmodels` VALUES (100,'Tesla Y','TY','Tesla',1,250000,3,'20,160','40000,70000',0,0,NULL,NULL,NULL,NULL,NULL),(101,'Hyundai Ioniq','Ioniq 5','Hyundai',2,70000,1,'20,160','40000,70000',0,0,NULL,NULL,NULL,NULL,NULL),(102,'Kia','K3','Hyundai',2,80000,1,'20,160','40000,70000',0,0,NULL,NULL,NULL,NULL,NULL),(103,'BMQ IX','xDrive 50','BMW',3,196000,1,'20,160','40000,70000',0,0,NULL,NULL,NULL,NULL,NULL),(104,'Audi e-tron','50 Quattro','Audi',4,120000,1,'20,160','40000,70000',0,0,NULL,NULL,NULL,NULL,NULL),(105,'Volkswagen E-Golf','VW MQB EG','Volkswagen',5,40000,3,'20,160','40000,70000',0,0,NULL,NULL,NULL,NULL,NULL),(106,'Volvo XC','XC 40','Volvo',6,133000,1,'20,160','40000,70000',0,0,NULL,NULL,NULL,NULL,NULL),(107,'Nissan Leaf','2022','Nissan',7,46000,1,'20,160','40000,70000',0,0,NULL,NULL,NULL,NULL,NULL),(108,'Honda E-Advance','HE','Honda',8,56000,1,'20,160','40000,70000',0,0,NULL,NULL,NULL,NULL,NULL),(109,'Ford Mustang','Mach-E SR RWD','Ford',9,109000,1,'20,160','40000,70000',0,0,NULL,NULL,NULL,NULL,NULL);
-/*!40000 ALTER TABLE `evmodels` ENABLE KEYS */;
+LOCK TABLES `evcar` WRITE;
+/*!40000 ALTER TABLE `evcar` DISABLE KEYS */;
+INSERT INTO `evcar` VALUES (100,'Tesla Y','TY','Tesla',1,250000,3,'20,160','40000,70000',0,0,NULL,NULL,NULL,NULL,NULL),(101,'Hyundai Ioniq','Ioniq 5','Hyundai',2,70000,1,'20,160','40000,70000',0,0,NULL,NULL,NULL,NULL,NULL),(102,'Kia','K3','Hyundai',2,80000,1,'20,160','40000,70000',0,0,NULL,NULL,NULL,NULL,NULL),(103,'BMQ IX','xDrive 50','BMW',3,196000,1,'20,160','40000,70000',0,0,NULL,NULL,NULL,NULL,NULL),(104,'Audi e-tron','50 Quattro','Audi',4,120000,1,'20,160','40000,70000',0,0,NULL,NULL,NULL,NULL,NULL),(105,'Volkswagen E-Golf','VW MQB EG','Volkswagen',5,40000,3,'20,160','40000,70000',0,0,NULL,NULL,NULL,NULL,NULL),(106,'Volvo XC','XC 40','Volvo',6,133000,1,'20,160','40000,70000',0,0,NULL,NULL,NULL,NULL,NULL),(107,'Nissan Leaf','2022','Nissan',7,46000,1,'20,160','40000,70000',0,0,NULL,NULL,NULL,NULL,NULL),(108,'Honda E-Advance','HE','Honda',8,56000,1,'20,160','40000,70000',0,0,NULL,NULL,NULL,NULL,NULL),(109,'Ford Mustang','Mach-E SR RWD','Ford',9,109000,1,'20,160','40000,70000',0,0,NULL,NULL,NULL,NULL,NULL);
+/*!40000 ALTER TABLE `evcar` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `evliveinfo`
+--
+
+DROP TABLE IF EXISTS `evliveinfo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `evliveinfo` (
+  `EVLiveInfoID` int NOT NULL AUTO_INCREMENT,
+  `CarId` int NOT NULL,
+  `CurrentRunningKms` int DEFAULT NULL,
+  `CurrentBatteryPercentage` float DEFAULT NULL,
+  `SourceLongitude` double DEFAULT NULL,
+  `SourceLatitude` double DEFAULT NULL,
+  `IsAllocated` tinyint DEFAULT NULL,
+  `BatteryPercentageAtDestination` float DEFAULT NULL,
+  `DestinationLatitude` double DEFAULT NULL,
+  `DestinationLongitude` double DEFAULT NULL,
+  PRIMARY KEY (`EVLiveInfoID`),
+  UNIQUE KEY `DestinationLongitude_UNIQUE` (`DestinationLongitude`),
+  KEY `FKEYEVMODELID_idx_idx` (`CarId`),
+  CONSTRAINT `FKEYEVMODEL_idx` FOREIGN KEY (`CarId`) REFERENCES `evcar` (`CarId`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `evliveinfo`
+--
+
+LOCK TABLES `evliveinfo` WRITE;
+/*!40000 ALTER TABLE `evliveinfo` DISABLE KEYS */;
+INSERT INTO `evliveinfo` VALUES (1,100,NULL,50,-81.214418,43.04263,NULL,46,42.990018,-81.250306),(2,101,NULL,43,-81.223853,42.936349,NULL,39,43.017922,-81.214593),(3,102,NULL,85,-81.255172,43.034952,NULL,83,42.959033,-81.235184),(4,103,NULL,68,-81.214418,43.012817,NULL,61,-81.199929,-81.279478),(5,104,NULL,76,-81.288593,43.038038,NULL,73,43.005131,-81.174015),(6,105,NULL,32,-81.223758,42.958621,NULL,30,42.984434,-81.229931),(7,106,NULL,23,-81.281606,43.025071,NULL,20,42.983343,-81.254411),(8,107,NULL,89,-81.214981,42.980507,NULL,82,42.942299,-81.398029),(9,108,NULL,44,-81.235184,42.959033,NULL,39,42.947609,-81.281203),(10,109,NULL,52,-81.235184,42.959033,NULL,49,42.983012,-81.234849);
+/*!40000 ALTER TABLE `evliveinfo` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -324,4 +324,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-08-06 16:01:20
+-- Dump completed on 2022-08-06 16:17:25
