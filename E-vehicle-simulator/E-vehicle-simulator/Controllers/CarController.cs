@@ -18,29 +18,50 @@ namespace E_vehicle_simulator.Controllers
         // GET: CarController
         public ActionResult Index()
         {
-            string query = "SELECT c.*,eb.EVBrandName,ct.ChargingType FROM evcar c inner join evbrands eb on c.EvBrandID=eb.EVBrandID inner join chargingtype ct on c.ChargingTypeID=ct.ChargingTypeID;";
+            if (HttpContext.Session.GetString("Userdetails") != null)
+            {
+                string query = "SELECT c.*,eb.EVBrandName,ct.ChargingType FROM evcar c inner join evbrands eb on c.EvBrandID=eb.EVBrandID inner join chargingtype ct on c.ChargingTypeID=ct.ChargingTypeID;";
 
-            IEnumerable<EvCarModel> cars = _con.Query<EvCarModel>(query);
-            return View(cars);
+                IEnumerable<EvCarModel> cars = _con.Query<EvCarModel>(query);
+                return View(cars);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
         }
 
         // GET: CarController/Details/5
         public ActionResult Details(int id)
         {
-            string sql = $"SELECT c.*,eb.EVBrandName,ct.ChargingType FROM evcar c inner join evbrands eb on c.EvBrandID=eb.EVBrandID inner join chargingtype ct on c.ChargingTypeID=ct.ChargingTypeID where c.CarId={id};";
-            EvCarModel ev = new EvCarModel();
-            ev = _con.Query<EvCarModel>(sql).ToList().FirstOrDefault();
-            return View(ev);
+            if (HttpContext.Session.GetString("Userdetails") != null)
+            {
+                string sql = $"SELECT c.*,eb.EVBrandName,ct.ChargingType FROM evcar c inner join evbrands eb on c.EvBrandID=eb.EVBrandID inner join chargingtype ct on c.ChargingTypeID=ct.ChargingTypeID where c.CarId={id};";
+                EvCarModel ev = new EvCarModel();
+                ev = _con.Query<EvCarModel>(sql).ToList().FirstOrDefault();
+                return View(ev);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
         }
 
         // GET: CarController/Create
         public ActionResult Create()
         {
-            string brandquery = "SELECT * FROM evbrands;";
-            ViewData["EVBrandId"] = new SelectList(_con.Query<EVBrandModel>(brandquery), "EVBrandID", "EVBrandName");
-            string ctypequery = "SELECT * FROM chargingtype;";
-            ViewData["CTypeId"] = new SelectList(_con.Query<ChargingTypeModel>(ctypequery), "ChargingTypeID", "ChargingType");
-            return View();
+            if (HttpContext.Session.GetString("Userdetails") != null)
+            {
+                string brandquery = "SELECT * FROM evbrands;";
+                ViewData["EVBrandId"] = new SelectList(_con.Query<EVBrandModel>(brandquery), "EVBrandID", "EVBrandName");
+                string ctypequery = "SELECT * FROM chargingtype;";
+                ViewData["CTypeId"] = new SelectList(_con.Query<ChargingTypeModel>(ctypequery), "ChargingTypeID", "ChargingType");
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
         }
 
         // POST: CarController/Create
@@ -74,14 +95,21 @@ namespace E_vehicle_simulator.Controllers
         // GET: CarController/Edit/5
         public ActionResult Edit(int id)
         {
-            string brandquery = "SELECT * FROM evbrands;";
-            ViewData["EVBrandId"] = new SelectList(_con.Query<EVBrandModel>(brandquery), "EVBrandID", "EVBrandName");
-            string ctypequery = "SELECT * FROM chargingtype;";
-            ViewData["CTypeId"] = new SelectList(_con.Query<ChargingTypeModel>(ctypequery), "ChargingTypeID", "ChargingType");
-            string sql = $"SELECT * FROM evcar where CarId={id};";
-            EvCarModel ev = new EvCarModel();
-            ev = _con.Query<EvCarModel>(sql).ToList().FirstOrDefault();
-            return View(ev);
+            if (HttpContext.Session.GetString("Userdetails") != null)
+            {
+                string brandquery = "SELECT * FROM evbrands;";
+                ViewData["EVBrandId"] = new SelectList(_con.Query<EVBrandModel>(brandquery), "EVBrandID", "EVBrandName");
+                string ctypequery = "SELECT * FROM chargingtype;";
+                ViewData["CTypeId"] = new SelectList(_con.Query<ChargingTypeModel>(ctypequery), "ChargingTypeID", "ChargingType");
+                string sql = $"SELECT * FROM evcar where CarId={id};";
+                EvCarModel ev = new EvCarModel();
+                ev = _con.Query<EvCarModel>(sql).ToList().FirstOrDefault();
+                return View(ev);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
         }
 
         // POST: CarController/Edit/5
