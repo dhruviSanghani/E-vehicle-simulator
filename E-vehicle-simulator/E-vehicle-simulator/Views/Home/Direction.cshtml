@@ -1,9 +1,47 @@
-﻿@{
+﻿@model E_vehicle_simulator.Models.EvCarModel
+
+@{
     ViewData["Title"] = "Direction";
 }
 <div class="container">    
 <main role="main" class="pb-3">
+   @* <div class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <span class="label label-default">Click on marker for Start location</span>
+    <label id="lblstart"></label><br>
+
+    <span class="label label-default">Click on marker for End location</span>
+    <label id="lblend"></label>
+    <lable id="lblmcount" style="visibility:hidden"></lable><br>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" onclick="loadDoc()">Direction</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="jumbotron">
+  <h1 class="display-4">Hello, world!</h1>
+  <p class="lead">Click on marker for Start location</p>
+   <label id="lblstart"></label>
+  <hr class="my-4">
+  <p>Click on marker for End location</p>
+  <label id="lblend"></label>
+  <p class="lead">
+      <button type="button" class="btn btn-primary btn-lg" onclick="loadDoc()"  role="button">Direction</button>
+  </p>
+</div>*@
 <div class="Overdiv">
+    <
     <span class="label label-default">Click on marker for Start location</span>
     <label id="lblstart"></label><br>
 
@@ -18,9 +56,7 @@
 </div>
 
 @section Scripts{
-    <script>
-
-        
+    <script>       
                       
 
         function loadDoc() {

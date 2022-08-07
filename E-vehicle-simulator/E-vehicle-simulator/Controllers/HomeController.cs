@@ -1,5 +1,6 @@
 ﻿using E_vehicle_simulator.Models;
 using Microsoft.AspNetCore.Mvc;
+using MySqlConnector;
 using System.Diagnostics;
 
 namespace E_vehicle_simulator.Controllers
@@ -8,10 +9,14 @@ namespace E_vehicle_simulator.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private MySqlConnection _mysql;
+        private ConfigConnecion _con;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, MySqlConnection mySql)
         {
             _logger = logger;
+            _mysql = mySql;
+            _con = new ConfigConnecion(mySql);
         }
 
         public IActionResult Index()
@@ -26,11 +31,14 @@ namespace E_vehicle_simulator.Controllers
             }
         }
 
-        public IActionResult Direction()
+        public IActionResult Direction(int id)
         {
             if (HttpContext.Session.GetString("Userdetails") != null)
             {
-                return View();
+                string sql = $"SELECT c.*,eb.EVBrandName,ct.ChargingType FROM evcar c inner join evbrands eb on c.EvBrandID=eb.EVBrandID inner join chargingtype ct on c.ChargingTypeID=ct.ChargingTypeID where c.CarId={id};";
+                EvCarModel ev = new EvCarModel();
+                ev = _con.Query<EvCarModel>(sql).ToList().FirstOrDefault();
+                return View(ev);
             }
             else
             {

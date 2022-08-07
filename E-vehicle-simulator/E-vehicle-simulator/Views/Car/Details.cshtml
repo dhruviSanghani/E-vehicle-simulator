@@ -1,0 +1,78 @@
+﻿@model E_vehicle_simulator.Models.EvCarModel
+
+@{
+    ViewData["Title"] = "Vehicle Details";
+}
+
+<div class="container h-100 d-flex align-items-center justify-content-center" id="contentBox">
+    <div class="row col-12 align-items-center">
+        <h1>@Model.CarModelName's Details</h1>
+        <hr />
+        <div class="row">
+            <form>                
+                <div class="form-row row">
+                    <div class="form-group col-md-6">
+                        <input asp-for="CarId" class="form-control" style="display:none" />
+                        <label asp-for="CarModelName" class="control-label"></label>
+                        <input asp-for="CarModelName" class="form-control" readonly />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="CarModelNo" class="control-label"></label>
+                        <input asp-for="CarModelNo" class="form-control" readonly />
+                    </div>
+                </div>
+                <div class="form-row row">
+                    <div class="form-group col-md-4">
+                        <label asp-for="CarCompany" class="control-label"></label>
+                        <input asp-for="CarCompany" class="form-control" readonly />
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label asp-for="MaxCharge" class="control-label"></label>
+                        <input asp-for="MaxCharge" class="form-control" readonly />
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label asp-for="PeakPower" class="control-label"></label>
+                        <input asp-for="PeakPower" class="form-control" readonly/>
+                    </div>
+                </div>
+                <div class="form-row row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="EVBrandName" class="control-label"></label>
+                        <input asp-for="EVBrandName" class="form-control" readonly/>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="ChargingType" class="control-label"></label>
+                        <input asp-for="ChargingType" class="form-control" readonly/>
+                    </div>
+                </div>
+                <div class="form-row row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="EnergyConsumption" class="control-label"></label>
+                        <input asp-for="EnergyConsumption" class="form-control" readonly />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="ChargingCurve" class="control-label"></label>
+                        <input asp-for="ChargingCurve" class="form-control" readonly />
+                    </div>
+                </div>
+                <div class="form-row row">
+                    <div class="form-group form-check col-md-4">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="IsAutoPilot" disabled /> @Html.DisplayNameFor(model => model.IsAutoPilot)
+                        </label>
+                    </div>
+                    <div class="form-group form-check col-md-4">
+                        <label class="form-check-label disabled">
+                            <input class="form-check-input" asp-for="IsAutoShift" disabled /> @Html.DisplayNameFor(model => model.IsAutoShift)
+                        </label>
+                    </div>                    
+                </div>
+                <div class="form-group">
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.CarId },new { @style="float:left",@class="btn btn-outline-success" })
+                    <a asp-action="Index" class="btn btn-outline-success" style="float:right">Back to List</a>                   
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,77 @@
+﻿@model IEnumerable<E_vehicle_simulator.Models.EvCarModel>
+
+@{
+    ViewData["Title"] = "Vehicles";
+}
+
+<div class="container h-100 d-flex align-items-center justify-content-center" id="contentBox">
+    <div class="row col-12 align-items-center">
+        <h1 class="col-md-10">Vehicles</h1> 
+        <div class="col-md-2" style="padding:1%">
+            <a asp-action="Create" class="btn btn-outline-success" style="float:right">Create New</a>
+            </div>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-light">
+                <thead>
+                    <tr>
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.CarId)
+                        </th>
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.CarModelName)
+                        </th>
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.CarModelNo)
+                        </th>
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.CarCompany)
+                        </th>
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.MaxCharge)
+                        </th>
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.EVBrandName)
+                        </th>
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.ChargingType)
+                        </th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <th scope="row">
+                                @Html.DisplayFor(modelItem => item.CarId)
+                            </th>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CarModelName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CarModelNo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CarCompany)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MaxCharge)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EVBrandName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ChargingType)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id=item.CarId }) |
+                                @Html.ActionLink("Details", "Details", new { id=item.CarId }) | 
+                                @Html.ActionLink("Select", "Direction","Home", new { id=item.CarId })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
